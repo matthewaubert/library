@@ -91,7 +91,7 @@ p {
 .main-content {
   background-color: var(--zinc-100);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16.6rem, 1fr));
   grid-template-rows: auto;
   gap: var(--gap-600);
 }
