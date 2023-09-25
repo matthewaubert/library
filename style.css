@@ -24,6 +24,8 @@
   --gap-600: 1.8rem;
   --shadow-r: 0 2px 5px rgba(0,0,0,0.1);
   --shadow-h: 0 4px 5px rgba(0,0,0,0.2);
+  --transition-fast: all .1s ease-in;
+  --transition-slow: all .4s ease-in;
   font-family: "Poppins", "Helvetica", "Arial", sans-serif;
   color: var(--zinc-800);
 }
@@ -45,8 +47,8 @@ a {
 button {
   appearance: none;
   border: none;
+  color: var(--zinc-800);
   font-family: "Poppins", "Helvetica", "Arial", sans-serif;
-  font-size: 0.9rem;
 }
 
 button:hover {
@@ -100,6 +102,7 @@ body > * {
   grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
   grid-template-rows: auto;
   gap: var(--gap-600);
+  position: relative;
 }
 
 .card {
@@ -121,5 +124,38 @@ body > * {
 
 .buttons > button {
   border-radius: 12px;
+  font-size: 0.9rem;
   padding: var(--gap-400);
+}
+
+.add-book {
+  background-color: var(--sky-500);
+  border-radius: 100px;
+  bottom: var(--gap-500);
+  right: var(--gap-500);
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  color: white;
+  font-size: 3rem;
+  font-weight: 400;
+  height: 4.5rem;
+  width: 4.5rem;
+  position: fixed;
+  transition: var(--transition-slow);
+  vertical-align: middle;
+}
+
+.add-book:hover {
+  width: 9rem;
+}
+
+.add-book:hover span {
+  display: none;
+}
+
+.add-book:hover::before {
+  content: "Add book";
+  font-size: 1.3rem;
+  font-weight: 500;
+  position: relative;
+  bottom: 0.55rem;
 }
