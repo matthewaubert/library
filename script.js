@@ -3,7 +3,7 @@ const myLibrary = [];
 enableModalDialog();
 enableSubmitBook();
 
-addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
+addBookToLibrary('Brave New World', 'Aldous Huxley', 288);
 // addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
 // addBookToLibrary('Walden', 'Henry David Thoreau', 311);
 // addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
