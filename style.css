@@ -62,8 +62,13 @@ button, dialog, form {
   font-family: var(--font-stack);
 }
 
+button {
+  background-color: var(--zinc-200);
+}
+
 button:hover {
   cursor: pointer;
+  background-color: var(--zinc-300);
 }
 
 h1, h3 {
@@ -144,27 +149,21 @@ body > * {
   gap: var(--gap-400);
 }
 
-.buttons button:first-child {
-  background-color: var(--zinc-200);
-}
-
-.buttons button:first-child:hover {
-  background-color: var(--zinc-300);
-}
-
-.card .buttons .read-btn {
+.read-btn,
+#submit {
   background-color: var(--sky-200);
 }
 
-.card .buttons .read-btn:hover {
+.read-btn:hover,
+#submit:hover {
   background-color: var(--sky-300);
 }
 
-.card .buttons .remove-btn {
+.remove-btn {
   background-color: var(--red-200);
 }
 
-.card .buttons .remove-btn:hover {
+.remove-btn:hover {
   background-color: var(--red-300);
 }
 
@@ -193,8 +192,9 @@ dialog form li button {
 }
 
 .add-book:hover {
-  width: 9rem;
+  background-color: var(--sky-500);
   box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  width: 9rem;
 }
 
 .add-book:hover span {
@@ -264,4 +264,8 @@ dialog #cancel {
   top: -23px;
   position: absolute;
   vertical-align: middle;
+}
+
+dialog #cancel:hover {
+  background-color: var(--zinc-100);
 }

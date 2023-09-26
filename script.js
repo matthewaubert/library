@@ -115,10 +115,9 @@ function enableSubmitBook() {
   const author = document.querySelector('#author');
   const pages = document.querySelector('#pages');
   const read = document.querySelector('#read');
-  const submit = document.querySelector('#submit');
   
   // add click event listener to submit button
-  submit.addEventListener('click', () => {
+  form.addEventListener('submit', () => {
     console.log(title.value, author.value, pages.value, read.checked);
     addBookToLibrary(title.value, author.value, pages.value, read.checked);
     displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
