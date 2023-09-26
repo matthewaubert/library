@@ -19,11 +19,11 @@ function addBookToLibrary(title, author, pages, read) {
 
 // iterate over Book instances in library and display them
 function displayLibrary(library) {
-  library.forEach(book => displayBook(book));
+  library.forEach((book, i) => displayBook(book, i));
 }
 
 // display Book instance as card on screen
-function displayBook(book) {
+function displayBook(book, index) {
   // create title, author, pages, and buttons elements; add classes
   const title = document.createElement('h3');
   title.textContent = book.title;
@@ -38,6 +38,9 @@ function displayBook(book) {
   read.textContent = book.read == true ? 'Read' : 'Not Read';
   const remove = document.createElement('button');
   remove.textContent = 'Remove';
+  // add click event listener to remove button that enables removal of book
+  remove.addEventListener('click', removeCard);
+
   const buttons = document.createElement('div');
   buttons.classList.add('buttons');
   [read, remove].forEach(el => buttons.appendChild(el));
@@ -45,11 +48,22 @@ function displayBook(book) {
   // create a new card, add content
   const card = document.createElement('div');
   card.classList.add('card');
+  card.dataset.index = index;
   [title, author, pages, buttons].forEach(el => card.appendChild(el));
 
   // add card to main-content
   const main = document.querySelector('.main-content');
   main.appendChild(card);
+
+  function removeCard() {
+    // delete book instance from myLibrary array
+    myLibrary.splice(card.dataset.index, 1);
+    card.remove();
+
+    // renumber card indices
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, i) => card.dataset.index = i);
+  }
 }
 
 // enable buttons to open and close the modal dialog with form
@@ -90,7 +104,7 @@ function enableSubmitBook() {
   submit.addEventListener('click', () => {
     console.log(title.value, author.value, pages.value, read.checked);
     addBookToLibrary(title.value, author.value, pages.value, read.checked);
-    displayBook(myLibrary[myLibrary.length - 1]);
+    displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
     form.reset();
   });
 }
