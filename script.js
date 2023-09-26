@@ -3,6 +3,12 @@ const myLibrary = [];
 enableModalDialog();
 enableSubmitBook();
 
+addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
+// addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
+// addBookToLibrary('Walden', 'Henry David Thoreau', 311);
+// addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
+displayLibrary(myLibrary);
+
 // Book constructor function
 function Book(title, author, pages, read = false) {
   this.title = title;
@@ -87,24 +93,10 @@ function displayBook(book, index) {
 function enableModalDialog() {
   const addBook = document.querySelector('.add-book');
   const dialog = document.querySelector('#dialog');
-  addBook.addEventListener('click', () => {
-    dialog.showModal();
-    openCheck(dialog);
-  });
+  addBook.addEventListener('click', () => dialog.showModal());
 
   const cancel = document.querySelector('#cancel');
-  cancel.addEventListener('click', () => {
-    dialog.close();
-    openCheck(dialog);
-  });
-
-  function openCheck(dialog) {
-    if (dialog.open) {
-      console.log("Dialog open");
-    } else {
-      console.log("Dialog closed");
-    }
-  }
+  cancel.addEventListener('click', () => dialog.close());
 }
 
 // enable the submit button in the modal dialog to submit a new book
@@ -118,28 +110,8 @@ function enableSubmitBook() {
   
   // add click event listener to submit button
   form.addEventListener('submit', () => {
-    console.log(title.value, author.value, pages.value, read.checked);
     addBookToLibrary(title.value, author.value, pages.value, read.checked);
     displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
     form.reset();
   });
 }
-
-
-addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
-addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
-addBookToLibrary('Walden', 'Henry David Thoreau', 311);
-addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
-// addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
-// addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
-// addBookToLibrary('Walden', 'Henry David Thoreau', 311);
-// addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
-// addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
-// addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
-// addBookToLibrary('Walden', 'Henry David Thoreau', 311);
-// addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
-
-console.log(myLibrary);
-
-displayLibrary(myLibrary);
-
