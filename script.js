@@ -19,15 +19,15 @@ function displayLibrary(myLibrary) {
     // create title, author, pages, and buttons elements; add classes
     const title = document.createElement('h3');
     title.textContent = book.title;
-    title.classList.add('title');
+    // title.classList.add('title');
 
     const author = document.createElement('p');
     author.textContent = book.author;
-    author.classList.add('author');
+    // author.classList.add('author');
 
     const pages = document.createElement('p');
     pages.textContent = `${book.pages} pages`;
-    pages.classList.add('pages');
+    // pages.classList.add('pages');
     
     const read = document.createElement('button');
     read.textContent = book.read == true ? 'Read' : 'Not Read';
@@ -48,6 +48,31 @@ function displayLibrary(myLibrary) {
   });
 }
 
+function enableAddBook() {
+  // add event listener to add button
+  const addBook = document.querySelector('.add-book');
+  const dialog = document.querySelector('#dialog');
+  addBook.addEventListener('click', () => {
+    dialog.showModal();
+    openCheck(dialog);
+  });
+
+  const cancel = document.querySelector('#cancel');
+  cancel.addEventListener('click', () => {
+    // close modal
+    dialog.close();
+    openCheck(dialog);
+  });
+
+  function openCheck(dialog) {
+    if (dialog.open) {
+      console.log("Dialog open");
+    } else {
+      console.log("Dialog closed");
+    }
+  }
+}
+
 
 addBookToLibrary('Brave New World', 'Aldous Huxley', 288, true);
 addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
@@ -65,3 +90,5 @@ addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
 console.log(myLibrary);
 
 displayLibrary(myLibrary);
+
+enableAddBook();

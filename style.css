@@ -26,7 +26,11 @@
   --shadow-h: 0 4px 5px rgba(0,0,0,0.2);
   --transition-fast: all .1s ease-in;
   --transition-slow: all .4s ease-in;
-  font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+  --font-stack: "Poppins", "Helvetica", "Arial", sans-serif;
+  --font-sm: 0.9rem;
+  --font-md: 1.1rem;
+  --font-lg: 1.3rem;
+  font-family: var(--font-stack);
   color: var(--zinc-800);
 }
 
@@ -44,11 +48,10 @@ a {
   text-decoration: none;
 }
 
-button {
+button, dialog, form {
   appearance: none;
   border: none;
-  color: var(--zinc-800);
-  font-family: "Poppins", "Helvetica", "Arial", sans-serif;
+  font-family: var(--font-stack);
 }
 
 button:hover {
@@ -60,16 +63,20 @@ h1, h3 {
 }
 
 h1 {
-  font-family: "ABeeZee", "Poppins", "Helvetica", "Arial", sans-serif;
+  font-family: "ABeeZee", var(--font-stack);
   font-size: 2.4rem;
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: var(--font-lg);
+}
+
+ul {
+  list-style-type: none;
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: var(--font-md);
 }
 
 body {
@@ -122,9 +129,11 @@ body > * {
   gap: var(--gap-400);
 }
 
-.buttons > button {
+.buttons > button,
+dialog form li button {
   border-radius: 12px;
-  font-size: 0.9rem;
+  color: var(--zinc-800);
+  font-size: var(--font-sm);
   padding: var(--gap-400);
 }
 
@@ -154,8 +163,64 @@ body > * {
 
 .add-book:hover::before {
   content: "Add book";
-  font-size: 1.3rem;
+  font-size: var(--font-lg);
   font-weight: 500;
   position: relative;
   bottom: 0.55rem;
+}
+
+/* dialog */
+
+#dialog {
+  border-radius: 12px;
+  margin: auto;
+  width: 20rem;
+}
+
+dialog form {
+  width: 100%;
+}
+
+dialog form ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-400);
+}
+
+dialog ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-100);
+}
+
+dialog form label {
+  font-size: var(--font-sm);
+}
+
+dialog ul > .checkbox {
+  flex-direction: row;
+  gap: var(--gap-300);
+}
+
+dialog form .checkbox > label {
+  font-size: var(--font-md);
+}
+
+dialog form input {
+  font-family: var(--font-stack);
+  font-size: var(--font-md);
+  padding: var(--gap-200);
+}
+
+dialog #cancel {
+  background-color: white;
+  border-radius: 46px;
+  font-size: var(--font-lg);
+  height: 1.95rem;
+  width: 1.95rem;
+  right: -23px;
+  top: -23px;
+  position: absolute;
+  vertical-align: middle;
 }
