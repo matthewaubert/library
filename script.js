@@ -35,7 +35,10 @@ function displayBook(book, index) {
   pages.textContent = `${book.pages} pages`;
   
   const read = document.createElement('button');
-  read.textContent = book.read == true ? 'Read' : 'Not Read';
+  read.textContent = book.read == true ? 'Read' : 'Not read';
+  // add click event listener to toggle book as 'Read' or 'Not read'
+  read.addEventListener('click', toggleRead);
+
   const remove = document.createElement('button');
   remove.textContent = 'Remove';
   // add click event listener to remove button that enables removal of book
@@ -63,6 +66,12 @@ function displayBook(book, index) {
     // renumber card indices
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, i) => card.dataset.index = i);
+  }
+
+  // change Book.read value and button text to opposite
+  function toggleRead() {
+    myLibrary[card.dataset.index].read = !myLibrary[card.dataset.index].read;
+    read.textContent = book.read == true ? 'Read' : 'Not read';
   }
 }
 
