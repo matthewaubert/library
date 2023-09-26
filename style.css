@@ -169,10 +169,11 @@ dialog form li button {
   bottom: 0.55rem;
 }
 
-/* dialog */
+/* modal dialog */
 
 #dialog {
   border-radius: 12px;
+  box-shadow: var(--shadow-r);
   margin: auto;
   width: 20rem;
 }
