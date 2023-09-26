@@ -11,8 +11,16 @@
   --red-200: #FECACA;
   --red-300: #FCA5A5;
   --amber-400: #FBBF24;
-  --green-200: #BBF7F0;
+  --green-200: #BBF7D0;
   --green-300: #86EFAC;
+  --green-500: #22C55E;
+  --green-600: #16A34A;
+  --emerald-200: #A7F3D0;
+  --emerald-500: #10B981;
+  --teal-200: #99F6E4;
+  --teal-500: #14B8A6;
+  --sky-200: #BAE6FD;
+  --sky-300: #7DD3FC;
   --sky-500: #0EA5E9;
   --sky-600: #0284C7;
   --sky-700: #0369A1;
@@ -117,9 +125,16 @@ body > * {
   border-radius: 12px;
   box-shadow: var(--shadow-r);
   padding: var(--gap-400);
+  position: relative;
+  transition: var(--transition-fast);
   display: grid;
   grid-template-rows: auto;
   gap: var(--gap-100);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-h);
+  top: -2px;
 }
 
 .card .buttons {
@@ -127,6 +142,30 @@ body > * {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap-400);
+}
+
+.buttons button:first-child {
+  background-color: var(--zinc-200);
+}
+
+.buttons button:first-child:hover {
+  background-color: var(--zinc-300);
+}
+
+.card .buttons .read-btn {
+  background-color: var(--sky-200);
+}
+
+.card .buttons .read-btn:hover {
+  background-color: var(--sky-300);
+}
+
+.card .buttons .remove-btn {
+  background-color: var(--red-200);
+}
+
+.card .buttons .remove-btn:hover {
+  background-color: var(--red-300);
 }
 
 .buttons > button,
@@ -142,7 +181,7 @@ dialog form li button {
   border-radius: 100px;
   bottom: var(--gap-500);
   right: var(--gap-500);
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
   color: white;
   font-size: 3rem;
   font-weight: 400;
@@ -155,6 +194,7 @@ dialog form li button {
 
 .add-book:hover {
   width: 9rem;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
 
 .add-book:hover span {

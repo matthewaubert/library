@@ -35,12 +35,19 @@ function displayBook(book, index) {
   pages.textContent = `${book.pages} pages`;
   
   const read = document.createElement('button');
-  read.textContent = book.read == true ? 'Read' : 'Not read';
+  // read.textContent = book.read == true ? 'Read' : 'Not read';
+  if (book.read) {
+    read.textContent = 'Read';
+    read.classList.add('read-btn');
+  } else {
+    read.textContent = 'Not read';
+  }
   // add click event listener to toggle book as 'Read' or 'Not read'
   read.addEventListener('click', toggleRead);
 
   const remove = document.createElement('button');
   remove.textContent = 'Remove';
+  remove.classList.add('remove-btn');
   // add click event listener to remove button that enables removal of book
   remove.addEventListener('click', removeCard);
 
@@ -72,6 +79,7 @@ function displayBook(book, index) {
   function toggleRead() {
     myLibrary[card.dataset.index].read = !myLibrary[card.dataset.index].read;
     read.textContent = book.read == true ? 'Read' : 'Not read';
+    read.classList.toggle('read-btn');
   }
 }
 
