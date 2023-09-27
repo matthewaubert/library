@@ -41,7 +41,6 @@ function displayBook(book, index) {
   pages.textContent = `${book.pages} pages`;
   
   const read = document.createElement('button');
-  // read.textContent = book.read == true ? 'Read' : 'Not read';
   if (book.read) {
     read.textContent = 'Read';
     read.classList.add('read-btn');
