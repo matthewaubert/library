@@ -2,6 +2,8 @@
 
 This project was built as part of The Odin Project: JavaScript course in order to practice what I've learned about JavaScript objects, constructor functions, and the _this_ keyword.
 
+I later updated the project by refactoring the Book constructor function to instead use ES6 class syntax for simple practice.
+
 ## Understand the Problem
 
 It is a simple library application in which a user can add books to their collection, including information concerning the title, author, number of pages, and whether or not they have read the book yet. The added books will be displayed as "cards" on the screen for the user to see.
