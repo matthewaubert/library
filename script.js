@@ -3,19 +3,21 @@ const myLibrary = [];
 enableModalDialog();
 enableSubmitBook();
 
+// Book class
+class Book {
+  constructor(title, author, pages, read = false) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
+
 addBookToLibrary('Brave New World', 'Aldous Huxley', 288);
 // addBookToLibrary('The Brothers Karamazov', 'Fyodor Dostoevsky', 840);
 // addBookToLibrary('Walden', 'Henry David Thoreau', 311);
 // addBookToLibrary('The Eye of the World', 'Robert Jordan', 812, true);
 displayLibrary(myLibrary);
-
-// Book constructor function
-function Book(title, author, pages, read = false) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
 
 // create new Book object instance and add to myLibrary
 function addBookToLibrary(title, author, pages, read) {

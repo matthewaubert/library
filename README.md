@@ -1,6 +1,6 @@
 # Library
 
-This project was built as part of The Odin Project: JavaScript course as a final project in order to practice what I've learned about JavaScript objects, constructor functions, and the _this_ keyword.
+This project was built as part of The Odin Project: JavaScript course in order to practice what I've learned about JavaScript objects, constructor functions, and the _this_ keyword.
 
 ## Understand the Problem
 
