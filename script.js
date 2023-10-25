@@ -110,6 +110,7 @@ function enableModalDialog() {
   cancel.addEventListener('click', () => dialog.close());
 }
 
+// check if field input is valid; show or remove error message as appropriate
 function checkInput() {
   // if field input is valid, remove error message
   if (this.validity.valid) {
@@ -120,6 +121,7 @@ function checkInput() {
   }
 }
 
+// shoe error next to invalid field
 function showError(field) {
   const errorMessage = {
     title: "a book title",
@@ -138,6 +140,7 @@ function showError(field) {
   }
 }
 
+// check if all fields are valid; if so, submit book, if not, show error
 function checkSubmission(e) {
   let fieldsAreValid = true;
   // if a field is invalid, don't let form submit
