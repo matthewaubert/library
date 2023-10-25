@@ -1,7 +1,16 @@
 const myLibrary = [];
 
+// cache form inputs
+const form = document.querySelector('form');
+const title = form.querySelector('#title');
+const author = form.querySelector('#author');
+const pages = form.querySelector('#pages');
+const read = form.querySelector('#read');
+
+// add event listeners
+form.addEventListener('submit', submitBook);
+
 enableModalDialog();
-enableSubmitBook();
 
 // Book class
 class Book {
@@ -101,18 +110,9 @@ function enableModalDialog() {
 }
 
 // enable the submit button in the modal dialog to submit a new book
-function enableSubmitBook() {
-  // select form inputs
-  const form = document.querySelector('form');
-  const title = document.querySelector('#title');
-  const author = document.querySelector('#author');
-  const pages = document.querySelector('#pages');
-  const read = document.querySelector('#read');
-  
-  // add click event listener to submit button
-  form.addEventListener('submit', () => {
-    addBookToLibrary(title.value, author.value, pages.value, read.checked);
-    displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
-    form.reset();
-  });
+function submitBook() {
+  addBookToLibrary(title.value, author.value, pages.value, read.checked);
+  displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+  form.reset();
 }
+
