@@ -7,6 +7,7 @@
   --zinc-800: #27272A;
   --red-200: #FECACA;
   --red-300: #FCA5A5;
+  --red-500: #ef4444;
   --sky-200: #BAE6FD;
   --sky-300: #7DD3FC;
   --sky-500: #0EA5E9;
@@ -295,4 +296,10 @@ dialog #cancel {
 
 dialog #cancel:hover {
   background-color: var(--zinc-100);
+}
+
+.error {
+  color: var(--red-500);
+  font-size: var(--font-sm);
+  padding-top: var(--gap-100);
 }

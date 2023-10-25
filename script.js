@@ -9,6 +9,15 @@ const read = form.querySelector('#read');
 
 // add event listeners
 form.addEventListener('submit', submitBook);
+[title, author, pages].forEach(el => el.addEventListener('input', checkInput));
+// form.addEventListener('submit', checkSubmission);
+
+// function checkSubmission(e) {
+//   // if field is invalid, don't let form submit
+//   e.preventDefault();
+//   const formData = new FormData(this);
+//   console.log(formData);
+// }
 
 enableModalDialog();
 
@@ -116,3 +125,30 @@ function submitBook() {
   form.reset();
 }
 
+function checkInput() {
+  // if field input is valid, remove error message
+  if (this.validity.valid) {
+    this.nextElementSibling.textContent = ''; // reset content of message
+  // if still an error, show error
+  } else {
+    showError(this);
+  }
+}
+
+function showError(targetField) {
+  const errorMessage = {
+    title: "a book title",
+    author: "an author",
+    pages: "a number of pages"
+  };
+  
+  // if field is empty, display error message
+  if (targetField.validity.valueMissing) {
+    targetField.nextElementSibling.textContent = `You must enter ${errorMessage[targetField.id]}.`;
+  }
+
+  // if page num field is less than min
+  if (targetField.validity.rangeUnderflow) {
+    targetField.nextElementSibling.textContent = `Number must be at least 1. You entered ${targetField.value}.`;
+  }
+}
