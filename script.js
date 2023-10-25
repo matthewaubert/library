@@ -8,16 +8,8 @@ const pages = form.querySelector('#pages');
 const read = form.querySelector('#read');
 
 // add event listeners
-form.addEventListener('submit', submitBook);
 [title, author, pages].forEach(el => el.addEventListener('input', checkInput));
-// form.addEventListener('submit', checkSubmission);
-
-// function checkSubmission(e) {
-//   // if field is invalid, don't let form submit
-//   e.preventDefault();
-//   const formData = new FormData(this);
-//   console.log(formData);
-// }
+form.addEventListener('submit', checkSubmission);
 
 enableModalDialog();
 
@@ -118,13 +110,6 @@ function enableModalDialog() {
   cancel.addEventListener('click', () => dialog.close());
 }
 
-// enable the submit button in the modal dialog to submit a new book
-function submitBook() {
-  addBookToLibrary(title.value, author.value, pages.value, read.checked);
-  displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
-  form.reset();
-}
-
 function checkInput() {
   // if field input is valid, remove error message
   if (this.validity.valid) {
@@ -135,7 +120,7 @@ function checkInput() {
   }
 }
 
-function showError(targetField) {
+function showError(field) {
   const errorMessage = {
     title: "a book title",
     author: "an author",
@@ -143,12 +128,33 @@ function showError(targetField) {
   };
   
   // if field is empty, display error message
-  if (targetField.validity.valueMissing) {
-    targetField.nextElementSibling.textContent = `You must enter ${errorMessage[targetField.id]}.`;
+  if (field.validity.valueMissing) {
+    field.nextElementSibling.textContent = `You must enter ${errorMessage[field.id]}.`;
   }
 
   // if page num field is less than min
-  if (targetField.validity.rangeUnderflow) {
-    targetField.nextElementSibling.textContent = `Number must be at least 1. You entered ${targetField.value}.`;
+  if (field.validity.rangeUnderflow) {
+    field.nextElementSibling.textContent = `Number must be at least 1. You entered ${field.value}.`;
   }
+}
+
+function checkSubmission(e) {
+  let fieldsAreValid = true;
+  // if a field is invalid, don't let form submit
+  [title, author, pages].forEach(field => {
+    if (!field.validity.valid) {
+      e.preventDefault();
+      showError(field);
+      fieldsAreValid = false;
+    }
+  });
+
+  if (fieldsAreValid) submitBook();
+}
+
+// enable the submit button in the modal dialog to submit a new book
+function submitBook() {
+  addBookToLibrary(title.value, author.value, pages.value, read.checked);
+  displayBook(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+  form.reset();
 }
