@@ -121,7 +121,7 @@ function checkInput() {
   }
 }
 
-// shoe error next to invalid field
+// show error next to invalid field
 function showError(field) {
   const errorMessage = {
     title: "a book title",
